@@ -10,7 +10,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  simple_auth: ^2.0.4
+  simple_auth:
+    git:
+      url: git://github.com/mnlt24/simple_auth.git
+      path: simple_auth
 flutter:
   plugin:
     androidPackage: clancey.simpleauth.simpleauthflutter

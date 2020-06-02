@@ -45,6 +45,7 @@
         NSString *identifier = call.arguments[@"identifier"];
         WebAuthenticator *auth = authenticators[identifier];
         [auth foundToken];
+        [authenticators removeObjectForKey:identifier];
         result(@"success");
         return;
     }
@@ -73,6 +74,14 @@
     
 }
 #pragma mark FlutterStreamHandler impl
+
+- (id)init {
+    self = [super init];
+    if(nil != self) {
+        authenticators = [[NSMutableDictionary alloc] init];
+    }
+    return self;
+}
 
 - (FlutterError*)onListenWithArguments:(id)arguments eventSink:(FlutterEventSink)eventSink {
     _eventSink = eventSink;
